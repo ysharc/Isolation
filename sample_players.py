@@ -167,7 +167,7 @@ class GreedyPlayer():
     equivalent to a minimax search agent with a search depth of one.
     """
 
-    def __init__(self, score_fn=open_move_score):
+    def __init__(self, score_fn=improved_score):
         self.score = score_fn
 
     def get_move(self, game, time_left):
@@ -254,10 +254,12 @@ class HumanPlayer():
 
 if __name__ == "__main__":
     from isolation import Board
+    from game_agent import MinimaxPlayer
+    from game_agent import AlphaBetaPlayer
 
     # create an isolation board (by default 7x7)
-    player1 = RandomPlayer()
-    player2 = GreedyPlayer()
+    player1 = AlphaBetaPlayer(score_fn=improved_score)
+    player2 = AlphaBetaPlayer()
     game = Board(player1, player2)
 
     # place player 1 on the board at row 2, column 3, then place player 2 on
